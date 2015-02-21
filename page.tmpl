@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>What I Wish I Knew When Learning Nix ( Charles Strahan )</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <style type="text/css">
+      $header-includes$
+    </style>
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '513a2d6e613f5d3c6f000186');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+
+    $if(highlighting-css)$
+      <style type="text/css">
+    $highlighting-css$
+      </style>
+    $endif$
+    $for(css)$
+    <link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$/>
+    $endfor$
+    $if(math)$
+    $if(html5)$
+    $else$
+      $math$
+    $endif$
+    $endif$
+    $for(header-includes)$
+      $header-includes$
+    $endfor$
+  </head>
+
+  <body>
+    <div>
+
+        <div class="row">
+
+          <div class="span3 side">
+              <div class="toc">
+                $toc$
+              </div>
+          </div>
+
+          <div class="span9 body">
+$body$
+          </div>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="nav.js"></script>
+  </body>
+</html>
