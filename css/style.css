@@ -23,6 +23,18 @@ pre code {
   font: 15px/19px Inconsolata, Monaco,"Lucida Console",Terminal,"Courier New",Courier;
 }
 
+/* This is necessary because pandoc's syntax highlighter doesn't
+ * recognize 'nix' and 'console' as valid syntaxes, and therefore pandoc
+ * does not render those blocks as pre.sourceCode.
+ * TODO: Remove after we start using Pygments.
+ */
+pre.nix code, pre.console code{
+    color: #007020;
+}
+pre.nix, pre.console {
+    padding: 10px;
+}
+
 img {
   max-width: 100%;
   height: auto;
