@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- includes.hs
-import Text.Pandoc
+import Text.Pandoc.JSON
 
 doInclude :: Block -> IO Block
 doInclude cb@(CodeBlock (id, classes, namevals) contents) =
@@ -18,6 +18,4 @@ doHtml cb@(CodeBlock (id, classes, namevals) contents) =
 doHtml x = return x
 
 main :: IO ()
-main = getContents >>= bottomUpM doInclude . readMarkdown def
-                   >>= bottomUpM doHtml
-                   >>= putStrLn . writeMarkdown def
+main = toJSONFilter (\b -> doInclude b >>= doHtml)

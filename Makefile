@@ -1,24 +1,28 @@
 PANDOC = pandoc
-IFORMAT = markdown
 FLAGS = --standalone --toc --toc-depth=2 --highlight-style pygments
 TEMPLATE = page.tmpl
 STYLE = css/style.css
+SRC = tutorial
 
-HTML = tutorial.html
-
-all: $(HTML)
+all: $(SRC).html $(SRC).epub $(SRC).pdf
 
 includes: includes.hs
 	ghc --make $<
 
 %.html: %.md includes
-	./includes < $< | $(PANDOC) -c $(STYLE) --template $(TEMPLATE) -s -f $(IFORMAT) -t html $(FLAGS) -o $@
+	$(PANDOC) -f markdown -t json < $< \
+	| ./includes \
+	| pandoc -f json -t html --template $(TEMPLATE) -c $(STYLE) $(FLAGS) -o $@
 
 %.epub: %.md includes
-	./includes < $< | $(PANDOC) -f $(IFORMAT) -t epub $(FLAGS) -o $@
+	$(PANDOC) -f markdown -t json < $< \
+	| ./includes \
+	| pandoc -f json -t epub --template $(TEMPLATE) -c $(STYLE) $(FLAGS) -o $@
 
 %.pdf: %.md includes
-	./includes < $< | $(PANDOC) -c -s -f $(IFORMAT) --latex-engine=xelatex $(FLAGS) -o $@
+	$(PANDOC) -f markdown -t json < $< \
+	| ./includes \
+	| pandoc -f json -t latex --latex-engine=xelatex -c $(STYLE) $(FLAGS) -o $@
 
 clean:
-	-rm $(CHAPTERS) $(HTML)
+	rm -f *.html *.epub *.pdf
