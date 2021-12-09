@@ -1,4 +1,4 @@
-with (import <nixpkgs> { });
+with (import <nixpkgs-master> { });
 
 let
   ghcPackages = haskellPackages.ghcWithHoogle

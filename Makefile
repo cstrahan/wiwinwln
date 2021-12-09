@@ -22,7 +22,7 @@ includes: includes.hs
 %.pdf: %.md includes
 	$(PANDOC) -f markdown -t json < $< \
 	| ./includes \
-	| pandoc -f json -t latex --latex-engine=xelatex -c $(STYLE) $(FLAGS) -o $@
+	| pandoc -f json -t latex --pdf-engine=xelatex -c $(STYLE) $(FLAGS) -o $@
 
 clean:
 	rm -f *.html *.epub *.pdf
