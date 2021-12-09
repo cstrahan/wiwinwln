@@ -444,7 +444,6 @@ scenarios. Pretty slick, huh?
 [modularity]: http://nixos.org/nixos/manual/sec-configuration-syntax.html#sec-modularity
 [builtins]: http://nixos.org/nix/manual/#ssec-builtins
 [pkgs.lib]: https://github.com/NixOS/nixpkgs/blob/master/lib/default.nix
-[pkgs.lib]: https://github.com/NixOS/nixpkgs/blob/master/lib/default.nix
 [environment.systemPackages]: http://nixos.org/nixos/manual/ch-options.html#opt-environment.systemPackages
 [nix-shell]: http://nixos.org/nix/manual/#sec-nix-shell
 [ouroboros]: http://en.wikipedia.org/wiki/Ouroboros

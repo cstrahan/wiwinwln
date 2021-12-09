@@ -1,15 +1,9 @@
-with (import <nixpkgs> { });
+with (import <nixpkgs-master> { });
 
 let
-  ghc = haskellngPackages;
-
-  withHoogle = haskellEnv:
-    ghc.callPackage <nixpkgs/pkgs/development/libraries/haskell/hoogle/local.nix> {
-      packages = haskellEnv.paths;
-    };
-
-  ghcPackages = ghc.ghcWithPackages (p: with p; [
-    pandoc
+  ghcPackages = haskellPackages.ghcWithHoogle
+    (haskellPackages: with haskellPackages; [
+      pandoc
   ]);
 
 in
@@ -19,7 +13,6 @@ with pkgs;
 runCommand "dummy" {
   buildInputs = [
     ghcPackages
-    (withHoogle ghcPackages)
   ];
   shellHook = ''
     export NIX_GHC="${ghcPackages}/bin/ghc"
